@@ -14,10 +14,15 @@ const read_promise=(file)=>{
 }
 
 
+
+
+
 read_promise("./dog.txt")
     .then(data=>{
-        console.log(data);
-        return data;
+        return superagent.get(`https://dog.ceo/api/breed/${data}/images/random`);      
+    })
+    .then(data=>{
+        console.log(data.body);
     })
     .catch(err=>{
         console.error("Error",err);
