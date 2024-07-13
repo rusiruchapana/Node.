@@ -27,25 +27,18 @@ const write_promise=(message)=>{
 }
 
 
+const img_saved= async ()=>{
+    const dog_name = await read_promise("./dog.txt");
+    //extract dog details.
+    const api_details = await superagent.get(`https://dog.ceo/api/breed/${dog_name}/images/random`);
+    //extract image url
+    const img_url = api_details.body.message;
+    //write image url in a seperate file.
+    await write_promise(img_url);
 
 
-
-
-
-read_promise("./dog.txt")
-    .then(data=>{
-        return superagent.get(`https://dog.ceo/api/breed/${data}/images/random`);      
-    })
-    .then(data1=>{
-        return data1.body;
-    })
-    .then((data2)=>{
-        //console.log(data2.message);
-        write_promise((data2.message));
-    })
-    .catch(err=>{
-        console.error("Error",err);
-    });
+}
+img_saved();
 
 
 
