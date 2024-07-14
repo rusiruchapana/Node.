@@ -13,28 +13,40 @@ const tours_details_json = JSON.parse(tours_details);
 
 
 app.get("/api/v1/tours",(req,res)=>{
-    res.send({
-        status: "200 Ok",
-        data: {
-            tours: tours_details_json
-        }
+    res
+        .status(200)
+        .send({
+            status: "Ok",
+            data: {
+                tours: tours_details_json
+            }
 
-    });
+        });
 }); 
 
 
 app.post("/api/v1/tours",(req,res)=>{
     console.log(tours_details_json.length);
 
-    //using spread operator.
+    //using spread operator. 
     const new_data = req.body;
     const new_element = {id: tours_details_json.length};
     const saved_data = {...new_element , ...new_data};
 
-    console.log(saved_data);
+    //console.log(saved_data);
+    tours_details_json.push(saved_data);
+    fs.writeFileSync("./dev-data/data/tours-simple.json",JSON.stringify(tours_details_json));
+
+    res.status(201)
+       .send({
+            status: "ok",
+            data: {
+                tours: tours_details_json
+            }
+       });
 
 
-    res.send("Succesfully saved");
+    
 });
 
 
