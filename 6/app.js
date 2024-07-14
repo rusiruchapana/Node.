@@ -12,6 +12,9 @@ const tours_details = fs.readFileSync("./dev-data/data/tours-simple.json","utf8"
 const tours_details_json = JSON.parse(tours_details);
 
 
+
+
+//get method.
 app.get("/api/v1/tours",(req,res)=>{
     res
         .status(200)
@@ -25,6 +28,10 @@ app.get("/api/v1/tours",(req,res)=>{
 }); 
 
 
+
+
+
+//post method.
 app.post("/api/v1/tours",(req,res)=>{
     console.log(tours_details_json.length);
 
