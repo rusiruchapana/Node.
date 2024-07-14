@@ -19,6 +19,16 @@ app.get("/api/v1/tours",(req,res)=>{
 }); 
 
 
+app.post("./dev-data/data/tours-simple.json",(req,res)=>{
+
+});
+
+
+
+
+
+
+
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}!`)
