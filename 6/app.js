@@ -3,6 +3,10 @@ const app = express()
 const port = 3000
 const fs = require("fs");
 
+//configure midleware.
+app.use(express.json());
+
+
 
 const tours_details = fs.readFileSync("./dev-data/data/tours-simple.json","utf8");
 const tours_details_json = JSON.parse(tours_details);
