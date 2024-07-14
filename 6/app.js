@@ -24,7 +24,16 @@ app.get("/api/v1/tours",(req,res)=>{
 
 
 app.post("/api/v1/tours",(req,res)=>{
-    console.log(req.body);
+    console.log(tours_details_json.length);
+
+    //using spread operator.
+    const new_data = req.body;
+    const new_element = {id: tours_details_json.length};
+    const saved_data = {...new_element , ...new_data};
+
+    console.log(saved_data);
+
+
     res.send("Succesfully saved");
 });
 
