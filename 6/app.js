@@ -31,6 +31,9 @@ app.get("/api/v1/tours",(req,res)=>{
 
 
 
+
+
+
 //post method.
 app.post("/api/v1/tours",(req,res)=>{
     console.log(tours_details_json.length);
@@ -57,13 +60,29 @@ app.post("/api/v1/tours",(req,res)=>{
 });
 
 
+
+
+
+
+//get details by request params.
 app.get("/api/v1/tours/:id",(req,res)=>{
     const id = req.params;
-    console.log(id.id);
+    //console.log(id.id);
 
-    console.log(tours_details_json);
-    res.send("Success.");
+    //console.log(tours_details_json);
+    tours_details_json.map((set)=>{
+        if((set.id)==(id.id)){
+            //console.log(set);
+            res.status(201)
+                .send({
+                        status:"ok",
+                        tours: set
+                });
+        }
+    });   
 });
+
+
 
 
 
