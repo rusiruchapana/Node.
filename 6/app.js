@@ -57,7 +57,13 @@ app.post("/api/v1/tours",(req,res)=>{
 });
 
 
+app.get("/api/v1/tours/:id",(req,res)=>{
+    const id = req.params;
+    console.log(id.id);
 
+    console.log(tours_details_json);
+    res.send("Success.");
+});
 
 
 
