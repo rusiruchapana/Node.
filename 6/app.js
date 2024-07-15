@@ -15,6 +15,12 @@ app.use((req,res,next)=>{
 });
 
 
+
+
+
+
+
+
 const getAllTours = (req,res)=>{ 
     res
         .status(200)
@@ -67,9 +73,13 @@ const getUniqueTour = (req,res)=>{
 
 
 //routes.
-app.get("/api/v1/tours",getAllTours); 
-app.post("/api/v1/tours",saveTour);
-app.get("/api/v1/tours/:id",getUniqueTour);
+// app.get("/api/v1/tours",getAllTours); 
+// app.post("/api/v1/tours",saveTour);
+// app.get("/api/v1/tours/:id",getUniqueTour);
+
+app.route("/api/v1/tours").get(getAllTours).post(saveTour);
+app.route("/api/v1/tours/:id").get(getUniqueTour);
+
 
 
 
