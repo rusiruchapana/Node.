@@ -4,54 +4,8 @@ const port = 3000
 const fs = require("fs");
 
 
-
-
-
-// const saveTour = (req,res)=>{
-//     console.log(tours_details_json.length);
-//     //using spread operator. 
-//     const new_data = req.body;
-//     const new_element = {id: tours_details_json.length};
-//     const saved_data = {...new_element , ...new_data};
-//     //console.log(saved_data);
-//     tours_details_json.push(saved_data);
-//     fs.writeFileSync("./dev-data/data/tours-simple.json",JSON.stringify(tours_details_json));
-//     res.status(201)
-//        .send({
-//             status: "ok",
-//             data: {
-//                 tours: tours_details_json
-//             }
-//        });  
-// }
-
-// const getUniqueTour = (req,res)=>{
-//     const id = req.params;
-//     //console.log(id.id);
-//     //console.log(tours_details_json);
-//     tours_details_json.map((set)=>{
-//         if((set.id)==(id.id)){
-//             //console.log(set);
-//             res.status(201)
-//                 .send({
-//                         status:"ok",
-//                         tours: set
-//                 });
-//         }
-//     });   
-// }
-
-
-
-
-
-
 const tourRouter = require("./routes/tours");
 app.use("/tour",tourRouter);
-
-
-
-
 
 
 app.listen(port, () => {
