@@ -5,8 +5,11 @@ const fs = require("fs");
 
 const tours_details = fs.readFileSync("./dev-data/data/tours-simple.json","utf8");
 const tours_details_json = JSON.parse(tours_details);
-//get method.
-app.get("/api/v1/tours",(req,res)=>{
+
+
+
+
+const getAllTours = (req,res)=>{
     res
         .status(200)
         .send({
@@ -15,14 +18,11 @@ app.get("/api/v1/tours",(req,res)=>{
                 tours: tours_details_json
             }
         });
-}); 
+}
 
 
-
-//post method.
-app.post("/api/v1/tours",(req,res)=>{
+const saveTour = (req,res)=>{
     console.log(tours_details_json.length);
-   
     //using spread operator. 
     const new_data = req.body;
     const new_element = {id: tours_details_json.length};
@@ -36,15 +36,12 @@ app.post("/api/v1/tours",(req,res)=>{
             data: {
                 tours: tours_details_json
             }
-       });
-    
-});
+       });  
+}
 
-
-app.get("/api/v1/tours/:id",(req,res)=>{
+const getUniqueTour = (req,res)=>{
     const id = req.params;
     //console.log(id.id);
-
     //console.log(tours_details_json);
     tours_details_json.map((set)=>{
         if((set.id)==(id.id)){
@@ -56,7 +53,16 @@ app.get("/api/v1/tours/:id",(req,res)=>{
                 });
         }
     });   
-});
+}
+
+
+
+
+
+//routes.
+app.get("/api/v1/tours",getAllTours); 
+app.post("/api/v1/tours",saveTour);
+app.get("/api/v1/tours/:id",getUniqueTour);
 
 
 
