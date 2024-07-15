@@ -4,21 +4,22 @@ const port = 3000
 const fs = require("fs");
 
 
-app.use((req,res,next)=>{
-    console.log("Midleware.");
-    next();
-});
-
-
 
 const tours_details = fs.readFileSync("./dev-data/data/tours-simple.json","utf8");
 const tours_details_json = JSON.parse(tours_details);
 
 
-const getAllTours = (req,res)=>{
+app.use((req,res,next)=>{
+    req.requestTime = new Date().toISOString();
+    next();
+});
+
+
+const getAllTours = (req,res)=>{ 
     res
         .status(200)
         .send({
+            time: req.requestTime,
             status: "Ok",
             data: {
                 tours: tours_details_json
