@@ -13,9 +13,7 @@ const tours_details_json = JSON.parse(tours_details);
 
 
 
-
-//get method.
-app.get("/api/v1/tours",(req,res)=>{
+const getAllTours = (req,res)=>{
     res
         .status(200)
         .send({
@@ -23,19 +21,10 @@ app.get("/api/v1/tours",(req,res)=>{
             data: {
                 tours: tours_details_json
             }
-
         });
-}); 
+}
 
-
-
-
-
-
-
-
-//post method.
-app.post("/api/v1/tours",(req,res)=>{
+const saveTour = (req,res)=>{
     console.log(tours_details_json.length);
 
     //using spread operator. 
@@ -53,19 +42,10 @@ app.post("/api/v1/tours",(req,res)=>{
             data: {
                 tours: tours_details_json
             }
-       });
+       });  
+}
 
-
-    
-});
-
-
-
-
-
-
-//get details by request params.
-app.get("/api/v1/tours/:id",(req,res)=>{
+const getOneTour = (req,res)=>{
     const id = req.params;
     //console.log(id.id);
 
@@ -80,7 +60,16 @@ app.get("/api/v1/tours/:id",(req,res)=>{
                 });
         }
     });   
-});
+}
+
+
+
+//routes
+app.get("/api/v1/tours",getAllTours()); 
+app.post("/api/v1/tours",);
+app.get("/api/v1/tours/:id",);
+
+
 
 
 
