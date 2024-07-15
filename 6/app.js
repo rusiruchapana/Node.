@@ -78,6 +78,9 @@ app.post("/api/v1/tours",saveTour);
 app.get("/api/v1/tours/:id",getUniqueTour);
 
 
+const tourRouter = require("./routes/tours");
+app.use("/tour",tourRouter);
+
 
 
 
