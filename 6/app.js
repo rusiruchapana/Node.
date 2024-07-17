@@ -1,9 +1,10 @@
 const  express = require('express')
 const app = express()
-const port = 3000
-const tourRouter = require("./routes/tours");
-
 app.use(express.static("./public"));
+const tourRouter = require("./routes/tours");
+require("dotenv").config();
+const port = process.env.PORT;
+
 
 //time
 app.use((req,res,next)=>{
