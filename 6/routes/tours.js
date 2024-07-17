@@ -10,11 +10,7 @@ const tours_details_json = JSON.parse(tours_details);
 
 
 
-//get all tours
-router.use((req,res,next)=>{
-    req.requestTime = new Date().toISOString();
-    next();
-});
+
 
 const getAllTours = (req,res)=>{ 
     res
