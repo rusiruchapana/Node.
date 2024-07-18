@@ -6,16 +6,13 @@ require("dotenv").config();
 const port = process.env.PORT;
 
 
-//connect to mongodb atlas cloud database.
+//connect to the database.
 const mongoose = require("mongoose");
-const url = "mongodb+srv://rusiru:" + process.env.PASS + "@isuru.yeeakum.mongodb.net/tours?retryWrites=true&w=majority&appName=Isuru";
-
-mongoose.connect(url)
+const conn_string = "mongodb+srv://rusiru:"+ process.env.PASSWORD +"@rusiru.fokxvs9.mongodb.net/"+ process.env.DATABASE +"?retryWrites=true&w=majority&appName=rusiru";
+mongoose.connect(conn_string)
     .then(()=>{
-        console.log("Database succesfully created.");
-    })
-;
-
+        console.log("Connect succesfully to the "+ (process.env.DATABASE)+ " database.");
+    });
 
 
 
