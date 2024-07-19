@@ -1,16 +1,12 @@
-//config express
 const express =  require("express");
 const app = express();
-//config dotenv file.
 require("dotenv").config();
 const port = process.env.PORT;
 
 
+const tours_routes = require("./Routes/tours");
 
-app.get("/",(req,res)=>{
-    res.send("Simple get request");
-});
-
+app.use("/tours",tours_routes);
 
 
 app.listen(port, ()=>{
