@@ -5,8 +5,24 @@ const tour_details = require("../Models/tourModel");
 
 
 //GET API.
-router.get("/",(req,res)=>{
+//GET ALL TOURS.
+router.get("/", async (req,res)=>{
     
+
+    try {
+        const get_all_tours = await tour_details.find();
+        res.status(201).json({
+            status: "success",
+            tour: {
+                get_all_tours
+            }
+        });
+    } catch (err) {
+        res.status(400).json({
+            status: "failed",
+            message: err.message
+        });
+    }
 });
 
 
