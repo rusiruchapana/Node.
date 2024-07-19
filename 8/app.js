@@ -5,7 +5,7 @@ const port = process.env.PORT;
 
 //connect to the mongodb database.
 const mongoose = require("mongoose");
-const db_url = "mongodb+srv://rusiru:rusirubB@rusiru.fokxvs9.mongodb.net/natour?retryWrites=true&w=majority&appName=rusiru";
+const db_url = "mongodb+srv://rusiru:"+process.env.PASSWORD+"@rusiru.fokxvs9.mongodb.net/"+ process.env.DB +"?retryWrites=true&w=majority&appName=rusiru";
 mongoose.connect(db_url)
         .then(()=>{
             console.log("Succesfully connected to the database.");
@@ -13,6 +13,10 @@ mongoose.connect(db_url)
         .catch((err)=>{
             console.log("Error: ", err);
         });
+
+
+
+
 
 
 const tours_routes = require("./Routes/tours");
