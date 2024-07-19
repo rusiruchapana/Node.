@@ -21,11 +21,14 @@ router.post("/", async (req,res)=>{
         const new_tour = await tour.save();
         res.status(201).json({
             status: "success",
-            tour: new_tour
+            tour: {
+                tour
+            }
         });
 
     } catch (err) {
         res.status(400).json({
+            status: "failed",
             message: err.message
         });
     }
