@@ -12,9 +12,6 @@ const user_schema = new mongoose.Schema({
         required:true
     }
 });
+
 const tour = mongoose.model("tour_details",user_schema);
-
-
-
-
 module.exports= tour;

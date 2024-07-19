@@ -10,6 +10,13 @@ router.get("/",(req,res)=>{
 });
 
 
+router.post("/",(req,res)=>{
+    const coming_details= req.body;
+    console.log(coming_details);
+    res.send("saved");
+});
+
+
 
 
 
