@@ -5,7 +5,6 @@ const port = process.env.PORT;
 
 
 const tours_routes = require("./Routes/tours");
-
 app.use("/tours",tours_routes);
 
 
