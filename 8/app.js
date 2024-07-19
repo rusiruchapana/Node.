@@ -18,6 +18,7 @@ mongoose.connect(db_url)
 
 
 
+
 const tours_routes = require("./Routes/tours");
 app.use("/tours",tours_routes);
 
