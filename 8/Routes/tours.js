@@ -7,8 +7,6 @@ const tour_details = require("../Models/tourModel");
 //GET API.
 //GET ALL TOURS.
 router.get("/", async (req,res)=>{
-    
-
     try {
         const get_all_tours = await tour_details.find();
         res.status(201).json({
@@ -24,6 +22,31 @@ router.get("/", async (req,res)=>{
         });
     }
 });
+
+
+
+//GET A SINGLE TOUR.
+router.get("/:id", async (req,res)=>{
+    try {
+        const get_one_tour = await tour_details.findById(req.params.id);
+    
+        res.status(201).json({
+            status: "success",
+            tour: {
+                get_one_tour
+            }
+        });
+        
+    } catch (error) {
+        res.status(400).json({
+            status: "failed",
+            message: err.message
+        });
+    }
+});
+
+
+
 
 
 //POST API.
