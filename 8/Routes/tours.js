@@ -6,21 +6,23 @@ const tour_details = require("../Models/tourModel");
 
 //GET API.
 //GET ALL TOURS.
-router.get("/", async (req,res)=>{
-    try {
-        const get_all_tours = await tour_details.find();
-        res.status(201).json({
-            status: "success",
-            tour: {
-                get_all_tours
-            }
-        });
-    } catch (err) {
-        res.status(400).json({
-            status: "failed",
-            message: err.message
-        });
-    }
+router.get("/", (req,res)=>{
+    // try {
+    //     const get_all_tours = await tour_details.find();
+    //     res.status(201).json({
+    //         status: "success",
+    //         tour: {
+    //             get_all_tours
+    //         }
+    //     });
+    // } catch (err) {
+    //     res.status(400).json({
+    //         status: "failed",
+    //         message: err.message
+    //     });
+    // }
+    console.log("Test get.");
+    res.send("Test get.");
 });
 
 
@@ -36,7 +38,7 @@ router.get("/:id", async (req,res)=>{
                 get_one_tour
             }
         });
-        
+
     } catch (error) {
         res.status(400).json({
             status: "failed",
@@ -72,6 +74,27 @@ router.post("/", async (req,res)=>{
         });
     }
 });
+
+
+//UPDATE API
+router.patch("/:id", async (req,res)=>{
+        try {
+            const update_tour = await tour_details.findByIdAndUpdate(req.params.id, req.body, {new:true,runValidators:true});
+            if(!update_tour){
+                res.status(404).json({
+                    status:"Failed",
+                    message:"Not Found"
+                });
+            }
+        } catch (err) {
+            res.status(400).json({
+                status: "failed",
+                message: err.message
+            });
+        }
+});
+
+
 
 
 
