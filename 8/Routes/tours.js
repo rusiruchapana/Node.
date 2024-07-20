@@ -99,7 +99,20 @@ router.patch("/:id", async (req,res)=>{
         }
 });
 
+//DELETE API.
+router.delete("/:id", async (req,res)=>{
+    try {
+        const delete_tour = await tour_details.findByIdAndDelete(req.params.id);
+        res.status(204).send("Deleted");
 
+
+    } catch (err) {
+        res.status(400).json({
+            status: "failed",
+            message: err.message
+        });
+    }
+});
 
 
 
