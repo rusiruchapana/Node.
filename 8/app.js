@@ -2,7 +2,7 @@ const express =  require("express");
 const app = express();
 require("dotenv").config();
 const port = process.env.PORT;
-//app.use(express.json());
+app.use(express.json());
 
 //connect to the mongodb database.
 const mongoose = require("mongoose");
@@ -24,11 +24,6 @@ mongoose.connect(db_url)
 const tours_routes = require("./Routes/tours");
 app.use("/tours",tours_routes);
 
-
-app.get("/rusiru",(req,res)=>{
-    console.log("ddddddddddd");
-    res.send("SImple get request.");
-});
 
 
 

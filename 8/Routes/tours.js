@@ -6,23 +6,22 @@ const tour_details = require("../Models/tourModel");
 
 //GET API.
 //GET ALL TOURS.
-router.get("/", (req,res)=>{
-    // try {
-    //     const get_all_tours = await tour_details.find();
-    //     res.status(201).json({
-    //         status: "success",
-    //         tour: {
-    //             get_all_tours
-    //         }
-    //     });
-    // } catch (err) {
-    //     res.status(400).json({
-    //         status: "failed",
-    //         message: err.message
-    //     });
-    // }
-    console.log("Test get.");
-    res.send("Test get.");
+router.get("/", async (req,res)=>{
+    try {
+        const get_all_tours = await tour_details.find();
+        res.status(201).json({
+            status: "success",
+            tour: {
+                get_all_tours
+            }
+        });
+    } catch (err) {
+        res.status(400).json({
+            status: "failed",
+            message: err.message
+        });
+    }
+   
 });
 
 
@@ -53,26 +52,24 @@ router.get("/:id", async (req,res)=>{
 
 //POST API.
 router.post("/", async (req,res)=>{
-    const tour = new tour_details({
-        name: req.body.name,
-        email: req.body.email
-    });
-
+    
+    console.log(req.body); 
     try {
-        const new_tour = await tour.save();
-        res.status(201).json({
-            status: "success",
-            tour: {
-                tour
-            }
-        });
-
-    } catch (err) {
+        const save_details = await tour_details.create(req.body);
+        res.status(200)
+            .json({
+                status:"success.",
+                tour:{
+                    save_details
+                }
+            });
+    } catch (error) {
         res.status(400).json({
             status: "failed",
             message: err.message
         });
     }
+
 });
 
 
@@ -85,7 +82,15 @@ router.patch("/:id", async (req,res)=>{
                     status:"Failed",
                     message:"Not Found"
                 });
+            }else{
+                res.status(200).json({
+                    status:"sucess.",
+                    tour:{
+                        update_tour
+                    }
+                });
             }
+            
         } catch (err) {
             res.status(400).json({
                 status: "failed",
