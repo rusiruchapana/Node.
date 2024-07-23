@@ -22,18 +22,19 @@ mongoose.connect(db_url)
             console.log("Error: ", err);
         });
 
-
+/*
 
 //read all sample datas.
 async function read_data(){
     try {
         const data = await fs.readFile("./dev-data/data/tours-simple.json","utf8");
-        console.log(data);
+        const save_details = await tour_details.create(JSON.parse(data));
+               
     } catch (error) {
         console.log("Error: ", error);
     }
 }
-//read_data();
+read_data();
 
 
 //delete all datas in the database.
@@ -48,6 +49,7 @@ async function delete_data(){
 
 //delete_data();
 
+*/
 
 
 
